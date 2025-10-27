@@ -97,6 +97,8 @@ export default function App() {
         <div id="appliances">
           <ProductHighlights />
         </div>
+        {/* Anchor shim for coffee section inside ProductHighlights */}
+        <div id="coffee" className="sr-only" aria-hidden="true" />
         <div id="guides">
           <BrewGuides />
         </div>
