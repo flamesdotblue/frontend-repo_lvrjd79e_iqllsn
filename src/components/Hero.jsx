@@ -1,12 +1,18 @@
 import { ArrowRight, Coffee } from "lucide-react";
+import { motion } from "framer-motion";
+import Spline from "@splinetool/react-spline";
 
 export default function Hero() {
   return (
     <section className="relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-br from-amber-50 via-stone-50 to-white" />
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-amber-50 via-stone-50 to-white" />
       <div className="relative mx-auto max-w-7xl px-6 py-20 sm:py-24 lg:px-8">
         <div className="grid items-center gap-10 lg:grid-cols-2">
-          <div>
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+          >
             <div className="inline-flex items-center gap-2 rounded-full bg-stone-900/90 px-3 py-1 text-xs font-medium text-amber-50">
               <Coffee className="h-3.5 w-3.5" />
               Elevate your morning ritual
@@ -42,9 +48,19 @@ export default function Hero() {
                 2-year appliance warranty
               </div>
             </div>
-          </div>
+          </motion.div>
           <div className="relative">
-            <div className="mx-auto aspect-[4/3] w-full max-w-xl overflow-hidden rounded-2xl bg-gradient-to-br from-stone-100 via-amber-50 to-white shadow-xl">
+            {/* Desktop: Spline scene for interactive, warm 3D accent */}
+            <div className="relative hidden aspect-[4/3] w-full max-w-xl overflow-hidden rounded-2xl bg-white shadow-xl lg:block">
+              <Spline
+                scene="https://prod.spline.design/v3Kp5o5tPj3ZsJtQ/scene.splinecode"
+                style={{ width: "100%", height: "100%" }}
+              />
+              {/* Soft gradient lid without blocking interactions */}
+              <div className="pointer-events-none absolute inset-0 bg-gradient-to-tr from-amber-50/60 via-transparent to-white/60" />
+            </div>
+            {/* Mobile/Tablet: performant image fallback */}
+            <div className="mx-auto aspect-[4/3] w-full max-w-xl overflow-hidden rounded-2xl bg-gradient-to-br from-stone-100 via-amber-50 to-white shadow-xl lg:hidden">
               <img
                 src="https://images.unsplash.com/photo-1504754524776-8f4f37790ca0?q=80&w=1600&auto=format&fit=crop"
                 alt="Minimal espresso setup with warm light"

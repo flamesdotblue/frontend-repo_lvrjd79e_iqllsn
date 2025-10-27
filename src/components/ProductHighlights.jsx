@@ -1,4 +1,5 @@
 import { Package, Shield, Truck, Star } from "lucide-react";
+import { motion } from "framer-motion";
 
 const applianceItems = [
   {
@@ -64,10 +65,15 @@ function FeatureBar() {
 function Grid({ items, id }) {
   return (
     <div id={id} className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-      {items.map((item) => (
-        <article
+      {items.map((item, idx) => (
+        <motion.article
           key={item.title}
           className="group overflow-hidden rounded-2xl border border-stone-200 bg-white shadow-sm transition hover:shadow-md"
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.5, delay: idx * 0.05 }}
+          whileHover={{ y: -4 }}
         >
           <div className="aspect-[4/3] w-full overflow-hidden">
             <img
@@ -89,7 +95,7 @@ function Grid({ items, id }) {
               View
             </button>
           </div>
-        </article>
+        </motion.article>
       ))}
     </div>
   );

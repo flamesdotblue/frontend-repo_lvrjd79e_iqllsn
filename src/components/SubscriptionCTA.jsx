@@ -3,7 +3,7 @@ import { ArrowRight, Check } from "lucide-react";
 export default function SubscriptionCTA() {
   return (
     <section className="relative overflow-hidden py-16 sm:py-20">
-      <div className="absolute inset-0 -z-0 bg-[radial-gradient(80%_60%_at_50%_0%,#fde68a33_0%,transparent_60%)]" />
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(80%_60%_at_50%_0%,#fde68a33_0%,transparent_60%)]" />
       <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
         <div className="grid items-center gap-10 rounded-2xl border border-amber-200 bg-amber-50/60 p-8 shadow-sm sm:p-10 lg:grid-cols-2">
           <div>

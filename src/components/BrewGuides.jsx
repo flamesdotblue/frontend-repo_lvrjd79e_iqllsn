@@ -1,4 +1,5 @@
 import { PlayCircle, Thermometer } from "lucide-react";
+import { motion } from "framer-motion";
 
 const guides = [
   {
@@ -36,10 +37,15 @@ export default function BrewGuides() {
           favorites and brew with confidence.
         </p>
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {guides.map((g) => (
-            <article
+          {guides.map((g, i) => (
+            <motion.article
               key={g.title}
               className="group overflow-hidden rounded-2xl border border-stone-200 bg-white shadow-sm transition hover:shadow-md"
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.5, delay: i * 0.05 }}
+              whileHover={{ y: -4 }}
             >
               <div className="relative aspect-video w-full overflow-hidden">
                 <img
@@ -64,7 +70,7 @@ export default function BrewGuides() {
                   Step-by-step technique with pro tips.
                 </p>
               </div>
-            </article>
+            </motion.article>
           ))}
         </div>
       </div>
